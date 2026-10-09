@@ -1,17 +1,20 @@
-# plant_care
+# Plant Care 🌱
 
-A new Flutter project.
+Plant Care is a mobile application designed to help users take care of their plants and keep track of their watering routines.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+* Manage your plants.
+* Get reminders when it's time to water them.
+* Keep track of plant care routines.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+* Flutter
+* Dart
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Status
+
+🚧 In development.
+
+*Plant Care is a provisional project name.*

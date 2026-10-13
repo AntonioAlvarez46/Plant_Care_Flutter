@@ -1,0 +1,22 @@
+env.json
+
+# Flutter / Dart
+/build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+
+# Android
+.gradle/
+**/android/local.properties
+*.jks
+
+# iOS / macOS
+**/Pods/
+
+# IDE y sistema
+.idea/
+*.iml
+.DS_Store

@@ -51,7 +51,6 @@ class _ResetFormState extends State<_ResetForm> {
               ),
             const SizedBox(height: 24),
             FilledButton(
-              // AuthGate pasa solo a Home al recibir el evento userUpdated
               onPressed: vm.isLoading ? null : () => vm.save(_password.text),
               child: Text(vm.isLoading ? 'Guardando...' : 'Guardar'),
             ),

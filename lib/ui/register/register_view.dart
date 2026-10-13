@@ -45,7 +45,7 @@ class _RegisterFormState extends State<_RegisterForm> {
           ? 'Cuenta creada. Confirma tu email e inicia sesión'
           : 'Cuenta creada. Inicia sesión'),
     ));
-    Navigator.of(context).pop(); // vuelve al login
+    Navigator.of(context).pop();
   }
 
   @override

@@ -19,8 +19,6 @@ class AuthRepository {
     await _auth.signInWithPassword(email: email, password: password);
   }
 
-  /// Devuelve true si hace falta confirmar el email.
-  /// Nunca deja la sesión iniciada: el usuario debe pasar por el login.
   Future<bool> register({
     required String username,
     required String email,
@@ -36,7 +34,6 @@ class AuthRepository {
       data: {'username': username},
     );
 
-    // Email ya registrado: Supabase no da error, devuelve identities vacío
     if (res.user?.identities?.isEmpty ?? false) {
       throw EmailAlreadyRegisteredException();
     }

@@ -10,7 +10,6 @@ abstract class BaseViewModel extends ChangeNotifier {
   bool get isLoading => _loading;
   String? get error => _error;
 
-  /// Ejecuta una acción gestionando carga y errores. Devuelve true si fue bien.
   Future<bool> run(Future<void> Function() action) async {
     _loading = true;
     _error = null;

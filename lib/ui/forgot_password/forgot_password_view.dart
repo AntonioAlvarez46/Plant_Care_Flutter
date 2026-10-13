@@ -59,7 +59,7 @@ class _ForgotFormState extends State<_ForgotForm> {
               ),
             const SizedBox(height: 24),
             FilledButton(
-              onPressed: vm.isLoading ? null : () => _submit(vm),
+              onPressed: null/*vm.isLoading ? null : () => _submit(vm)*/,
               child: Text(vm.isLoading ? 'Enviando...' : 'Enviar enlace'),
             ),
           ],

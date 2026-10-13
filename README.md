@@ -18,3 +18,9 @@ Plant Care is a mobile application designed to help users take care of their pla
 🚧 In development.
 
 *Plant Care is a provisional project name.*
+
+## Known issues
+
+### Forgot password is not working yet
+
+The "Forgot password" flow is currently disabled.

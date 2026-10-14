@@ -27,6 +27,13 @@ class _HomeBody extends StatelessWidget {
         ],
       ),
       body: Center(child: Text('Hola ${vm.email}')),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Añadir planta',
+        onPressed: () {
+          // TODO: navegar a la pantalla de añadir planta
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

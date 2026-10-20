@@ -5,6 +5,7 @@ import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/plant_repository.dart';
 import '../add_plant/add_plant_sheet.dart';
 import 'home_view_model.dart';
+import '../edit_plant/edit_plant_sheet.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -30,6 +31,18 @@ class _HomeBody extends StatelessWidget {
       builder: (_) => const AddPlantSheet(),
     );
     if (added == true && context.mounted) {
+      context.read<HomeViewModel>().loadPlants();
+    }
+  }
+
+    Future<void> _openEditPlant(BuildContext context, Plant plant) async {
+    final changed = await showModalBottomSheet<bool>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => EditPlantSheet(plant: plant),
+    );
+    if (changed == true && context.mounted) {
       context.read<HomeViewModel>().loadPlants();
     }
   }
@@ -72,7 +85,13 @@ class _HomeBody extends StatelessWidget {
                     child: ListView.builder(
                       padding: const EdgeInsets.only(bottom: 88),
                       itemCount: vm.plants.length,
-                      itemBuilder: (_, i) => _PlantTile(plant: vm.plants[i]),
+                      itemBuilder: (_, i) {
+  final plant = vm.plants[i];
+  return _PlantTile(
+    plant: plant,
+    onTap: () => _openEditPlant(context, plant),
+  );
+},
                     ),
                   ),
           ),
@@ -88,8 +107,9 @@ class _HomeBody extends StatelessWidget {
 }
 
 class _PlantTile extends StatelessWidget {
-  const _PlantTile({required this.plant});
+  const _PlantTile({required this.plant, required this.onTap});
   final Plant plant;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +121,7 @@ class _PlantTile extends StatelessWidget {
         necesitaAgua ? Theme.of(context).colorScheme.error : Colors.blue;
 
     return ListTile(
+      onTap: onTap,
       title: Text(plant.nombre),
       subtitle: Text(necesitaAgua
           ? '¡Necesita agua!'
@@ -130,7 +151,13 @@ class _PlantTile extends StatelessWidget {
 }
 
 String _formatRestante(Duration d) {
-  if (d.inMinutes < 60) return 'en ${d.inMinutes < 1 ? 1 : d.inMinutes} min';
-  if (d.inHours < 48) return 'en ${d.inHours} h';
-  return 'en ${d.inDays} días';
+  final days = d.inDays;
+  final hours = d.inHours % 24;
+  final minutes = d.inMinutes % 60;
+
+  if (days > 0) return hours > 0 ? 'en $days d $hours h' : 'en $days d';
+  if (hours > 0) {
+    return minutes > 0 ? 'en $hours h $minutes min' : 'en $hours h';
+  }
+  return 'en ${minutes < 1 ? 1 : minutes} min';
 }

@@ -30,9 +30,13 @@ abstract class BaseViewModel extends ChangeNotifier {
     if (e is UsernameTakenException) {
       return 'Ese nombre de usuario ya está en uso';
     }
+    
     if (e is EmailAlreadyRegisteredException) {
       return 'Ese email ya está registrado. Inicia sesión';
     }
+
+    if (e is PostgrestException) return e.message;
+
     if (e is AuthException) {
       final m = e.message.toLowerCase();
       if (m.contains('invalid login credentials')) {

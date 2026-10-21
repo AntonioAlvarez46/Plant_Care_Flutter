@@ -25,4 +25,22 @@ class PlantRepository {
   Future<void> waterPlant(String id) async {
     await _client.rpc('regar_planta', params: {'p_id': id});
   }
+
+  Future<void> updatePlant({
+    required String id,
+    required String nombre,
+    required int regar,
+    required WateringUnit unidad,
+  }) async {
+    await _client.from('plants').update({
+      'nombre': nombre,
+      'regar': regar,
+      'unidad': unidad.name,
+    }).eq('id', id);
+  }
+
+  Future<void> deletePlant(String id) async {
+    await _client.from('plants').delete().eq('id', id);
+  }
+  
 }

@@ -6,6 +6,7 @@ import '../../data/repositories/plant_repository.dart';
 import '../add_plant/add_plant_sheet.dart';
 import 'home_view_model.dart';
 import '../edit_plant/edit_plant_sheet.dart';
+import '../../data/services/push_service.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -15,6 +16,7 @@ class HomeView extends StatelessWidget {
         create: (c) => HomeViewModel(
           c.read<AuthRepository>(),
           c.read<PlantRepository>(),
+          c.read<PushService>(),
         ),
         child: const _HomeBody(),
       );
